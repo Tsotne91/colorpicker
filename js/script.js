@@ -16,10 +16,22 @@ let colorSquare =  document.getElementsByClassName("colorSquare");
 let selectedSquare = document.getElementsByClassName("selected")[0];
 
 
+function copyColor (e) {
+	selectedSquare.style.backgroundColor = window.getComputedStyle(e.target, null).getPropertyValue("background-color");
+}
 for (let i=0; i<colorSquare.length; i++){
-	function copyColor () {
-		let cssprop = window.getComputedStyle(colorSquare[i], null).getPropertyValue("background-color");
-		selectedSquare.style.backgroundColor = cssprop;
-	}
 	colorSquare[i].addEventListener("click", copyColor);
 }
+
+let createdDivs = document.getElementById("container").children;
+
+function applyColor (event){
+	event.target.style.backgroundColor = selectedSquare.style.backgroundColor;
+	console.log(event.target);
+}
+
+	for (let div of createdDivs){
+		div.addEventListener("click", applyColor);
+
+	}
+
