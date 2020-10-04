@@ -12,12 +12,14 @@ function addCircle(){
 document.getElementById("addSquare").addEventListener("click", addSquare);
 document.getElementById("addCircle").addEventListener("click", addCircle);
 
-let colorSquare =  document.getElementById("red");
-let selectedSquare = document.getElementsByClassName("selected").style.backgroundColor;
+let colorSquare =  document.getElementsByClassName("colorSquare");
+let selectedSquare = document.getElementsByClassName("selected")[0].style.backgroundColor;
 
-function copyColor () {
-   let cssprop = window.getComputedStyle(colorSquare, null).getPropertyValue("background-color");
-   selectedSquare = cssprop;
+
+for (let i=0; i<colorSquare.length; i++){
+	function copyColor () {
+		let cssprop = window.getComputedStyle(colorSquare[i], null).getPropertyValue("background-color");
+		selectedSquare = cssprop;
+	}
+	colorSquare[i].addEventListener("click", copyColor);
 }
-
-colorSquare.addEventListener("click", copyColor());
